@@ -237,12 +237,12 @@ beta_m_holder2[:,0]=beta
 beta_m_holder2[:,1]=m_holder2
 print(beta_m_holder2)
                 
-
+print("hello world")
 #Something is clearly going wrong with either the computation of the expectations or the jumping with the probabilities. 
 #Please have a look at the parts of code that find the expectation and the magnetisation to check they're right
 #Then please work out the conditional probabilities and replace them if they're wrong (pretty sure they are right for the 2x2 system)
 
-
+#Test
              
 
                         
