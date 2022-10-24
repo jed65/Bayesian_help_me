@@ -39,7 +39,6 @@ for i in range(1,iteration_no):
     #Now store and update values
     sample_holder[i,:]=sigma_tplus1 #store generated values
     sigma_t=sigma_tplus1 #update values for next iteration
-#Now find averages
 print(sample_holder[iteration_no-10:iteration_no,:])
 sample_holder=sample_holder.astype(int)
 count_1=np.count_nonzero(sample_holder==1)
@@ -227,10 +226,7 @@ iteration_numbers=np.array([100,2,2,2])
 m_holder2=np.zeros(len(beta))
 for i in range(0,len(beta)):
     sample,magnetisation=GibbsSamplerIsing(N,beta[i],sigma_initial,iteration_numbers[i]) #perform sampling for each beta
-    print(sample)
-    del(sample)
-    m_holder2[i]=magnetisation       
-    del(magnetisation)       
+    m_holder2[i]=magnetisation            
 
 beta_m_holder2=np.zeros((len(beta),2))
 beta_m_holder2[:,0]=beta
