@@ -103,6 +103,6 @@ class Vertex:
 
 test = Issing(100)
 
-beta = 0.44
+beta = 1
 
 print(test.giibbs_sample(beta,1000))
