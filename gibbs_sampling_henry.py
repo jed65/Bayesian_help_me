@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 from statistics import mean
+=======
+>>>>>>> Henry
 import numpy as np
 import math
 import random
@@ -8,15 +11,19 @@ class Issing:
     def __init__(self,n):
         self.size=n**2
         self.vertices = []
+<<<<<<< HEAD
         self.blue = []
         self.red = []
         self.state_history = np.ones(self.size).tolist()
+=======
+>>>>>>> Henry
 
         count = 0
         while count < self.size:
             self.vertices.append(Vertex(count,n))
             count = count + 1
 
+<<<<<<< HEAD
         if n%2 == 1:
             self.blue.extend(np.arange(0,self.size,2).tolist())
             self.red.extend(np.arange(1,self.size,2).tolist())
@@ -58,6 +65,21 @@ class Issing:
 
 
 #############################################################################################################################################
+=======
+    def step(self,beta):
+
+        if self.size%2==0:
+            a=1
+
+        else:
+            for index in np.arange(0,self.size-1,2).tolist():
+                self.vertices[index].jump(self,beta)
+
+            for inde in np.arange(0,self.size-1,2).tolist():
+                self.vertices[index].jump(self,beta)
+
+        
+>>>>>>> Henry
 class Vertex:
 
     def __init__(self,location,n):
@@ -74,7 +96,11 @@ class Vertex:
         if location >= n:
             self.negibours.append(location - n)
 
+<<<<<<< HEAD
         if location + 1 <=n*(n-1):
+=======
+        if location <=n*(n-1):
+>>>>>>> Henry
             self.negibours.append(location + n)
         
         
@@ -95,14 +121,28 @@ class Vertex:
         else:
             self.spin = -1
 
+<<<<<<< HEAD
         return(self.spin)
 ###########################################################################################################################################################
+=======
+>>>>>>> Henry
         
 
         
 
+<<<<<<< HEAD
 test = Issing(100)
 
 beta = 0.44
 
 print(test.giibbs_sample(beta,1000))
+=======
+test = Issing(3)
+
+print(test.size)
+print(test.vertices[0].negibours)
+beta=0.44
+test.vertices[4].jump(test,beta)
+
+test.step(beta)
+>>>>>>> Henry
