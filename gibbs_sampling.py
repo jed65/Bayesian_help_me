@@ -4,7 +4,7 @@ N=2
 sigma_0=np.ones(4) #initialise 
 sigma_t=sigma_0
 sigma_tplus1=sigma_0
-iteration_no=100000 #want to do this many iterations, truly does x-1, excludes initialised case
+iteration_no=10000 #want to do this many iterations, truly does x-1, excludes initialised case
 beta=10 #set beta above the critical value, magnetisation should be almost 1
 sample_holder=np.zeros((iteration_no,N**2)) #initialise matrix to hold the samples
 sample_holder[0,:]=sigma_t #set first row equal to initial value
@@ -237,12 +237,10 @@ beta_m_holder2[:,0]=beta
 beta_m_holder2[:,1]=m_holder2
 print(beta_m_holder2)
                 
-print("hello world")
+
 #Something is clearly going wrong with either the computation of the expectations or the jumping with the probabilities. 
 #Please have a look at the parts of code that find the expectation and the magnetisation to check they're right
 #Then please work out the conditional probabilities and replace them if they're wrong (pretty sure they are right for the 2x2 system)
-
-#Test
              
 
                         
