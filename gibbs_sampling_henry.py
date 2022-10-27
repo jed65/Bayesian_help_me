@@ -111,6 +111,7 @@ class Vertex:
 test = Issing(100)
 
 beta = 0.44
+<<<<<<< HEAD
 num_iterations = 1000
 plot_y = [1]
 count = 1
@@ -131,3 +132,8 @@ plt.axhline(m_inf.real)
 plt.axhline(mean(test.state_history), color = 'red')
 
 plt.show()
+=======
+
+test.vertices[105].jump(test,beta)
+print(test.giibbs_sample(beta,1000))
+>>>>>>> Henry
