@@ -1,8 +1,10 @@
 from statistics import mean
 import numpy as np
 import math
-import random
+import cmath
+import matplotlib.pyplot as plt
 
+######################################################################################################################################################
 class Issing:
 
     def __init__(self,n):
@@ -34,11 +36,16 @@ class Issing:
 
     def step(self,beta):
 
+        out = []
+
         for index in self.blue:
-            self.state_history.append(self.vertices[index].jump(self,beta))
+            out.append(self.vertices[index].jump(self,beta))
 
         for index in self.red:
-            self.state_history.append(self.vertices[index].jump(self,beta))
+            out.append(self.vertices[index].jump(self,beta))
+
+        self.state_history.extend(out)
+        return(out)
 
     def current_state(self):
         out = []
@@ -86,11 +93,11 @@ class Vertex:
             spin_bias = spin_bias + grid.vertices[index].spin
         
        
-        jmp_prob=(math.exp(4*beta*spin_bias) + 1)/(2*(math.cosh(4*beta*spin_bias)+1))
+        jmp_prob=1/(math.exp(-2*beta*spin_bias) + 1)
 
         #print(jmp_prob)
 
-        if jmp_prob>random.randint(0,1):
+        if jmp_prob>np.random.random():
             self.spin = 1
         else:
             self.spin = -1
@@ -103,6 +110,24 @@ class Vertex:
 
 test = Issing(100)
 
-beta = 1
+beta = 0.44
+num_iterations = 1000
+plot_y = [1]
+count = 1
+while count <= num_iterations:
+    test.step(beta)
+    plot_y.append(mean(test.current_state()))
+    count = count + 1
+    if count%(num_iterations/100) == 0:
+                print((count/num_iterations)*100,"%")
 
-print(test.giibbs_sample(beta,1000))
+
+plot_x = np.arange(0,num_iterations+1,1)
+plot_y = np.array(plot_y)
+plt.plot(plot_x, plot_y, color = 'Red')
+m_inf = (1-math.sinh(2*beta)**-4)**(1/8)
+
+plt.axhline(m_inf.real)
+plt.axhline(mean(test.state_history), color = 'red')
+
+plt.show()
