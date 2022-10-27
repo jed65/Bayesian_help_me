@@ -86,11 +86,11 @@ class Vertex:
             spin_bias = spin_bias + grid.vertices[index].spin
         
        
-        jmp_prob=(math.exp(4*beta*spin_bias) + 1)/(2*(math.cosh(4*beta*spin_bias)+1))
+        jmp_prob=1/(math.exp(-2*beta*spin_bias) + 1)
 
         #print(jmp_prob)
 
-        if jmp_prob>random.randint(0,1):
+        if jmp_prob>np.random.random():
             self.spin = 1
         else:
             self.spin = -1
@@ -103,6 +103,7 @@ class Vertex:
 
 test = Issing(100)
 
-beta = 1
+beta = 0.44
 
+test.vertices[105].jump(test,beta)
 print(test.giibbs_sample(beta,1000))
